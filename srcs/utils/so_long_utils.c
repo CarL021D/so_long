@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:01:15 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/25 08:10:05 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/25 12:49:10 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	update_player_position(t_game *game)
 			{
 				game->p_vrt_pos = i;
 				game->p_hrz_pos = j;
-				return;
+				return ;
 			}
 		}
 	}

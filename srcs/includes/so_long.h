@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:12:37 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/25 09:16:30 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/25 12:52:39 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,9 @@ int		check_number_of_collectible_and_exit(t_game *game);
 // ==================  GAME ANIMATION  ======================
 
 int		animation_handler(t_mlx *mlx);
-int 	init_characters_movement(int keycode, t_mlx *mlx);
+int		init_characters_movement(int keycode, t_mlx *mlx);
 void	set_coin_animation(t_mlx *mlx);
+void	coin_animation(t_mlx *mlx, int i, int j);
 void	set_player_animation(t_mlx *mlx, int direction);
 void	player_move_up(t_mlx *mlx, t_game *game);
 void	player_move_down(t_mlx *mlx, t_game *game);
@@ -106,10 +107,11 @@ void	player_move_left(t_mlx *mlx, t_game *game);
 void	player_move_right(t_mlx *mlx, t_game *game);
 void	set_enemy_animation(t_mlx *mlx);
 void	init_enemy_movement(t_mlx *mlx);
-void    enemy_move_up(t_mlx *mlx, int i, int j);
-void    enemy_move_down(t_mlx *mlx, int i, int j);
-void    enemy_move_left(t_mlx *mlx, int i, int j);
-void    enemy_move_right(t_mlx *mlx, int i, int j);
+void	randomize_enemy_direction(t_mlx *mlx, int i, int j);
+void	enemy_move_up_then_random(t_mlx *mlx, int i, int j);
+void	enemy_move_down_then_random(t_mlx *mlx, int i, int j);
+void	enemy_move_left_then_random(t_mlx *mlx, int i, int j);
+void	enemy_move_right_then_random(t_mlx *mlx, int i, int j);
 
 // ====================  FREE  ==============================
 

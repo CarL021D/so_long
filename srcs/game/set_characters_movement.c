@@ -6,13 +6,13 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 08:40:09 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/25 08:59:10 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/25 10:53:50 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int init_characters_movement(int keycode, t_mlx *mlx)
+int	init_characters_movement(int keycode, t_mlx *mlx)
 {
 	update_player_position(mlx->game);
 	if (keycode == ESC)

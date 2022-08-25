@@ -3,6 +3,11 @@ SRCS		=	srcs/game/so_long.c								\
 				srcs/game/init_images.c							\
 				srcs/game/set_player_movement.c					\
 				srcs/game/set_enemy_movement.c					\
+				srcs/game/set_var.c								\
+				srcs/game/set_characters_movement.c				\
+				srcs/game/set_animations_and_images.c			\
+				srcs/game/set_images.c							\
+				srcs/game/enemy_direction.c						\
 				srcs/map_parsing/check_map_name.c				\
 				srcs/map_parsing/check_map_error.c				\
 				srcs/map_parsing/check_map_elements.c			\
@@ -12,9 +17,6 @@ SRCS		=	srcs/game/so_long.c								\
 				srcs/utils/get_next_line.c						\
 				srcs/utils/get_next_line_utils.c				\
 				srcs/game/free_var.c							\
-				srcs/game/set_var.c								\
-				srcs/game/set_characters_movement.c				\
-				srcs/game/set_animations_and_images.c			\
 
 OBJS		=	$(SRCS:.c=.o)
 
