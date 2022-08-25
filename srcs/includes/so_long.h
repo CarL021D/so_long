@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:12:37 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/18 18:15:00 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/25 09:16:30 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 # define BUFFER_SIZE 1
 # define ESC 65307
-# define UP 119
-# define DOWN 115
-# define LEFT 97
-# define RIGHT 100
+# define UP_KEY 119
+# define DOWN_KEY 115
+# define LEFT_KEY 97
+# define RIGHT_KEY 100
+# define UP_DIR 1
+# define LEFT_DIR 2
+# define DOWN_DIR 3
+# define RIGHT_DIR 4
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -58,39 +62,26 @@ typedef struct s_game
 	int		p_hrz_pos;
 	int		nb_collectibles;
 	int		movement_count;
+	int		player_direction;
 	int		enemy_direction;
-
-	int		enemy_counter_anim;
-	int		enemy_counter_move;
-	
-	
-	void	*current_collectible_img;
-	
-	
+	int		enemy_x_pos;
+	int		enemy_y_pos;
+	int		enemy_counter;
 	int		coin_counter;
+	void	*current_collectible_img;
 }	t_game;
 
-// ====================  GNL  ==============================
-int		still_on_line(char *stash);
-char	*ft_strjoin(char *s1, char *buffer);
-char	*ft_get_line(char *stash);
-char	*ft_set_stash(char *stash);
-char	*get_next_line(int fd);
+//=======================  GAME  ============================
 
-// ====================  SO_LONG ===========================
-
-int	init_player_movement(int keycode, t_mlx *mlx);
-void	move_up(t_mlx *mlx, t_game *game);
-void	move_down(t_mlx *mlx, t_game *game);
-void	move_left(t_mlx *mlx, t_game *game);
-void	move_right(t_mlx *mlx, t_game *game);
+void	display_images(t_mlx *mlx);
 void	update_player_position(t_game *game);
-int	print_player_movement(t_mlx *mlx);
-int	free_all(t_mlx *mlx);
+void	print_movement_count_on_window(t_mlx *mlx);
+void	print_movement_count_on_terminal(t_mlx *mlx);
+int		init_images(t_mlx *mlx);
+int		init_images2(t_mlx *mlx);
 
-//=====================  PARSING  ==========================
-void	ft_free_map(char **map);
-void	free_mlx_and_map(t_mlx *mlx);
+//===================  MAP PARSING  ==========================
+
 char	**set_map(char *map_file, t_game *game);
 char	**del_carriage_return(char **map, t_game *game);
 char	**del_double_null_char(char **map, int map_nb_line);
@@ -103,32 +94,49 @@ int		check_map_surrounded_by_walls(char **map);
 int		check_number_of_player(char **map);
 int		check_number_of_collectible_and_exit(t_game *game);
 
-//=======================  GAME  ==========================
-int		init_images(t_mlx *mlx);
-int		init_images2(t_mlx *mlx);
-void	display_images(t_mlx *mlx);
-void	player_animation(t_mlx *mlx, int direction);
-void	update_player_position(t_game *game);
-void		print_movement_count_on_window(t_mlx *mlx);
-void		print_movement_count_on_terminal(t_mlx *mlx);
+// ==================  GAME ANIMATION  ======================
 
-
-// ===================  UTILS  =============================
-size_t	ft_strlen(char *str);
-void	ft_putnbr(int nb);
-char	*ft_itoa(int n);
-char	*ft_fill_arr(unsigned int value, int i, int neg);
-
-
-void	coin_animation(t_mlx *mlx);
-
-int		looping_func(t_mlx *mlx);
-
-void	enemy_animation(t_mlx *mlx);
+int		animation_handler(t_mlx *mlx);
+int 	init_characters_movement(int keycode, t_mlx *mlx);
+void	set_coin_animation(t_mlx *mlx);
+void	set_player_animation(t_mlx *mlx, int direction);
+void	player_move_up(t_mlx *mlx, t_game *game);
+void	player_move_down(t_mlx *mlx, t_game *game);
+void	player_move_left(t_mlx *mlx, t_game *game);
+void	player_move_right(t_mlx *mlx, t_game *game);
+void	set_enemy_animation(t_mlx *mlx);
 void	init_enemy_movement(t_mlx *mlx);
 void    enemy_move_up(t_mlx *mlx, int i, int j);
 void    enemy_move_down(t_mlx *mlx, int i, int j);
 void    enemy_move_left(t_mlx *mlx, int i, int j);
 void    enemy_move_right(t_mlx *mlx, int i, int j);
+
+// ====================  FREE  ==============================
+
+void	ft_free_map(char **map);
+void	free_mlx_and_map(t_mlx *mlx);
+void	free_img(t_mlx *mlx);
+int		free_all(t_mlx *mlx);
+
+// ======================  GNL  ==============================
+
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *buffer);
+char	*ft_get_line(char *stash);
+char	*ft_set_stash(char *stash);
+int		still_on_line(char *stash);
+
+// ====================  UTILS  =============================
+size_t	ft_strlen(char *str);
+void	ft_putnbr(int nb);
+void	ft_swap(char *a, char *b);
+char	*ft_itoa(int n);
+char	*ft_fill_arr(unsigned int value, int i, int neg);
+
+// ====================  VAR INITS ==========================
+
+void	set_game_variable(t_mlx *mlx);
+void	set_imgs_to_null(t_mlx *mlx);
+void	init_struct_and_var(t_mlx *mlx);
 
 #endif

@@ -1,8 +1,8 @@
 
 SRCS		=	srcs/game/so_long.c								\
 				srcs/game/init_images.c							\
-				srcs/game/init_player_movement.c				\
-				srcs/game/init_enemy_movement.c					\
+				srcs/game/set_player_movement.c					\
+				srcs/game/set_enemy_movement.c					\
 				srcs/map_parsing/check_map_name.c				\
 				srcs/map_parsing/check_map_error.c				\
 				srcs/map_parsing/check_map_elements.c			\
@@ -11,6 +11,10 @@ SRCS		=	srcs/game/so_long.c								\
 				srcs/utils/so_long_utils.c						\
 				srcs/utils/get_next_line.c						\
 				srcs/utils/get_next_line_utils.c				\
+				srcs/game/free_var.c							\
+				srcs/game/set_var.c								\
+				srcs/game/set_characters_movement.c				\
+				srcs/game/set_animations_and_images.c			\
 
 OBJS		=	$(SRCS:.c=.o)
 
@@ -18,7 +22,7 @@ CC			=	gcc
 
 RM			=	rm -f
 
-CFLAGS		= 	-Wall -Wextra -Werror -g3 -I./srcs/includes
+CFLAGS		= 	-Wall -Wextra -Werror -g -I./srcs/includes
 
 NAME		= 	so_long
 	

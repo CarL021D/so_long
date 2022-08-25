@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 23:31:38 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/16 09:45:31 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/23 09:26:12 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ size_t	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void	ft_swap(char *a, char *b)
+{
+	int	c;
+
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
 void	ft_putnbr(int nb)

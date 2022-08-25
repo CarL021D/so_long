@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player_movement.c                             :+:      :+:    :+:   */
+/*   set_player_movement.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 07:00:08 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/25 08:40:33 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/25 09:04:22 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_up(t_mlx *mlx, t_game *game)
+void	player_move_up(t_mlx *mlx, t_game *game)
 {
 	if ((game->map[game->p_vrt_pos - 1][game->p_hrz_pos] == '0')
 		|| (game->map[game->p_vrt_pos - 1][game->p_hrz_pos] == 'C'))
@@ -33,11 +33,11 @@ void	move_up(t_mlx *mlx, t_game *game)
 	}
 	if (game->map[game->p_vrt_pos - 1][game->p_hrz_pos] == 'V')
 		free_all(mlx);
-	player_animation(mlx, 1);
+	set_player_animation(mlx, 1);
 	display_images(mlx);
 }
 
-void	move_down(t_mlx *mlx, t_game *game)
+void	player_move_down(t_mlx *mlx, t_game *game)
 {
 	if (game->map[game->p_vrt_pos + 1][game->p_hrz_pos] == '0'
 		|| game->map[game->p_vrt_pos + 1][game->p_hrz_pos] == 'C')
@@ -58,11 +58,11 @@ void	move_down(t_mlx *mlx, t_game *game)
 	}
 	if (game->map[game->p_vrt_pos + 1][game->p_hrz_pos] == 'V')
 		free_all(mlx);
-	player_animation(mlx, 1);
+	set_player_animation(mlx, 1);
 	display_images(mlx);
 }
 
-void	move_left(t_mlx *mlx, t_game *game)
+void	player_move_left(t_mlx *mlx, t_game *game)
 {
 	if (game->map[game->p_vrt_pos][game->p_hrz_pos - 1] == '0'
 		|| game->map[game->p_vrt_pos][game->p_hrz_pos - 1] == 'C')
@@ -83,11 +83,11 @@ void	move_left(t_mlx *mlx, t_game *game)
 	}
 	if (game->map[game->p_vrt_pos][game->p_hrz_pos - 1] == 'V')
 		free_all(mlx);
-	player_animation(mlx, 2);
+	set_player_animation(mlx, 2);
 	display_images(mlx);
 }
 
-void	move_right(t_mlx *mlx, t_game *game)
+void	player_move_right(t_mlx *mlx, t_game *game)
 {
 	if (game->map[game->p_vrt_pos][game->p_hrz_pos + 1] == '0'
 		|| game->map[game->p_vrt_pos][game->p_hrz_pos + 1] == 'C')
@@ -108,6 +108,6 @@ void	move_right(t_mlx *mlx, t_game *game)
 	}
 	if (game->map[game->p_vrt_pos][game->p_hrz_pos + 1] == 'V')
 		free_all(mlx);
-	player_animation(mlx, 3);
+	set_player_animation(mlx, 3);
 	display_images(mlx);
 }

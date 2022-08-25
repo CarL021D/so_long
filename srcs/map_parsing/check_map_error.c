@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:12:03 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/16 11:57:56 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/23 09:48:39 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_map_errors(t_game *game)
 	if (!check_map_surrounded_by_walls(game->map))
 		return (write(1, "Error!, map must be surrounded by walls\n", 40), 0);
 	if (!check_number_of_player(game->map))
-		return (write(1, "Error!, there is more than one player\n", 38), 0);
+		return (write(1, "Error!, one player is required\n", 31), 0);
 	if (!check_number_of_collectible_and_exit(game))
 		return (write(1, "Error!, missing collectibles or exits\n", 38), 0);
 	return (1);
