@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:12:37 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/27 14:10:47 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/27 16:04:58 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # define BUFFER_SIZE 1
 # define ESC 65307
@@ -30,7 +30,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "mlx.h"
+# include <mlx.h>
 
 typedef struct s_mlx
 {
@@ -45,6 +45,8 @@ typedef struct s_mlx
 	void			*mlx_collectible2_img;
 	void			*mlx_collectible3_img;
 	void			*mlx_collectible4_img;
+	void			*mlx_enemy1_img;
+	void			*mlx_enemy2_img;
 	void			*mlx_exit_img;
 	struct s_game	*game;
 }	t_mlx;
@@ -61,6 +63,10 @@ typedef struct s_game
 	int		nb_collectibles;
 	int		movement_count;
 	int		player_direction;
+	int		enemy_direction;
+	int		enemy_x_pos;
+	int		enemy_y_pos;
+	int		enemy_anim_counter;
 	int		coin_counter;
 	void	*current_collectible_img;
 }	t_game;
@@ -69,6 +75,7 @@ typedef struct s_game
 
 void	display_images(t_mlx *mlx);
 void	update_player_position(t_game *game);
+void	print_movement_count_on_window(t_mlx *mlx);
 void	print_movement_count_on_terminal(t_mlx *mlx);
 int		init_images(t_mlx *mlx);
 int		init_images2(t_mlx *mlx);
@@ -89,14 +96,22 @@ int		check_number_of_collectible_and_exit(t_game *game);
 
 // ==================  GAME ANIMATION  ======================
 
+int		animation_handler(t_mlx *mlx);
 int		init_characters_movement(int keycode, t_mlx *mlx);
-int		set_coin_animation(t_mlx *mlx);
+void	set_coin_animation(t_mlx *mlx);
 void	coin_animation(t_mlx *mlx, int i, int j);
 void	set_player_animation(t_mlx *mlx, int direction);
 void	player_move_up(t_mlx *mlx, t_game *game);
 void	player_move_down(t_mlx *mlx, t_game *game);
 void	player_move_left(t_mlx *mlx, t_game *game);
 void	player_move_right(t_mlx *mlx, t_game *game);
+void	set_enemy_animation(t_mlx *mlx);
+void	init_enemy_movement(t_mlx *mlx);
+void	randomize_enemy_direction(t_mlx *mlx, int i, int j);
+void	enemy_move_up_then_random(t_mlx *mlx, int i, int j);
+void	enemy_move_down_then_random(t_mlx *mlx, int i, int j);
+void	enemy_move_left_then_random(t_mlx *mlx, int i, int j);
+void	enemy_move_right_then_random(t_mlx *mlx, int i, int j);
 
 // ====================  FREE  ==============================
 
@@ -116,6 +131,9 @@ int		still_on_line(char *stash);
 // ====================  UTILS  =============================
 size_t	ft_strlen(char *str);
 void	ft_putnbr(int nb);
+void	ft_swap(char *a, char *b);
+char	*ft_itoa(int n);
+char	*ft_fill_arr(unsigned int value, int i, int neg);
 
 // ====================  VAR INITS ==========================
 
