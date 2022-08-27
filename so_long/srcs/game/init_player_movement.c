@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 07:00:08 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/26 09:40:47 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/27 12:24:49 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	move_up(t_mlx *mlx, t_game *game)
 		print_movement_count_on_terminal(mlx);
 		free_all(mlx);
 	}
-	player_animation(mlx, 1);
+	set_player_animation(mlx, 1);
 	display_images(mlx);
 }
 
@@ -54,7 +54,7 @@ void	move_down(t_mlx *mlx, t_game *game)
 		print_movement_count_on_terminal(mlx);
 		free_all(mlx);
 	}
-	player_animation(mlx, 1);
+	set_player_animation(mlx, 1);
 	display_images(mlx);
 }
 
@@ -77,7 +77,7 @@ void	move_left(t_mlx *mlx, t_game *game)
 		print_movement_count_on_terminal(mlx);
 		free_all(mlx);
 	}
-	player_animation(mlx, 2);
+	set_player_animation(mlx, 2);
 	display_images(mlx);
 }
 
@@ -100,6 +100,6 @@ void	move_right(t_mlx *mlx, t_game *game)
 		print_movement_count_on_terminal(mlx);
 		free_all(mlx);
 	}
-	player_animation(mlx, 3);
+	set_player_animation(mlx, 3);
 	display_images(mlx);
 }

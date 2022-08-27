@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:12:37 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/26 10:17:56 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/27 12:29:58 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ char	*ft_set_stash(char *stash);
 int		still_on_line(char *stash);
 
 // ====================  UTILS  =============================
+
 size_t	ft_strlen(char *str);
 void	ft_putnbr(int nb);
 
