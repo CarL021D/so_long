@@ -6,7 +6,7 @@
 /*   By: caboudar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:12:03 by caboudar          #+#    #+#             */
-/*   Updated: 2022/08/27 13:48:59 by caboudar         ###   ########.fr       */
+/*   Updated: 2022/08/29 11:36:42 by caboudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_map_errors(t_game *game)
 	if (!game->map[0])
 		return (write(1, "Error!, no map at all\n", 22), 0);
 	if (!check_map_characters(game->map))
-		return (write(1, "Error!, there are some invalid characters\n", 41), 0);
+		return (write(1, "Error!, there are some invalid characters\n", 42), 0);
 	if (!check_rectangular_map(game->map))
 		return (write(1, "Error!, map not rectangular\n", 28), 0);
 	if (!check_map_surrounded_by_walls(game->map))
